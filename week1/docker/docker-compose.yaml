@@ -1,0 +1,13 @@
+version: '3'
+services:
+  pgdatabase:
+    image: postgres:13
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=ny-taxi
+    volumes:
+      # this path is specific to my machine, change it to your own path
+      - /home/dmmoskoglo/developer/code/DE-ZoomCamp/ny_taxi_postgre_data:/var/lib/postgresql/data:rw
+    ports:
+      - "5432:5432"

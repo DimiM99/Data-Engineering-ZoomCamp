@@ -1,0 +1,6 @@
+# directory for postgres data files to be mounted into the postgres container
+/ny_taxi_postgre_data/
+
+# misc files and directories to be ignored
+.idea
+.DS_Store
