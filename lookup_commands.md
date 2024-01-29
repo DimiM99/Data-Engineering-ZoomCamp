@@ -18,7 +18,7 @@ rm -rf ~/miniconda3/miniconda.sh
 
 ### create the env
 ```bash
-conda create -n DE-ZoomCamp python=3.11
+conda create -n DE-ZoomCamp python=3.10
 conda activate DE-ZoomCamp
 ```
 ### install common packages
