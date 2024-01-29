@@ -54,6 +54,7 @@ docker build -t taxi_ingest:v001 .
 ```
 
 ### Run the Ingestion Script in the Docker Container
+if postgres is running as a standalone container, adapt the --network parameter accordingly
 ```bash
 docker run -it \
     taxi_ingest:v001 \
@@ -67,10 +68,15 @@ docker run -it \
     --url="https://github.com/DataTalksClub/nyc-tlc-data/releases/download/green/green_tripdata_2019-09.csv.gz"
 ```
  
-## Working with Terraform
+# Working with Terraform
 
 ### Initialize Terraform
 make sure you are in the root directory of the project where the main.tf file is located
 ```bash
 terraform init
+```
+
+### Create the Infrastructure
+```bash
+terraform apply
 ```
