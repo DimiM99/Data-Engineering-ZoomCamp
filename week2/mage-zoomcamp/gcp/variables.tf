@@ -34,7 +34,7 @@ variable "region" {
 variable "zone" {
   type        = string
   description = "The default compute zone"
-  default     = "EU"
+  default     = "europe-west3-c"
 }
 
 variable "repository" {
