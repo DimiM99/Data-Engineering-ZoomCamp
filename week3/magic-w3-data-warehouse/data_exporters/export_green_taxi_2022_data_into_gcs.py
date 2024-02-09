@@ -20,5 +20,6 @@ def export_data_to_google_cloud_storage(df: DataFrame, **kwargs) -> None:
         df,
         bucket_name,
         object_key,
+        use_deprecated_int96_timestamps=True
     )
 
