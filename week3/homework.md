@@ -44,3 +44,41 @@ SELECT COUNT(1) FROM `peerless-sensor-411315.nyc_green_taxi.green_tripdata_full`
 WHERE fare_amount = 0;
 --> 1622
 ```
+
+#### query for question 4
+```sql
+CREATE TABLE `peerless-sensor-411315.nyc_green_taxi.green_taxi_p_pudate_c_pu_loc`
+PARTITION BY DATE(lpep_pickup_datetime)
+CLUSTER BY PUlocationID AS
+SELECT * FROM `peerless-sensor-411315.nyc_green_taxi.green_tripdata_full`;
+--> Partition by lpep_pickup_datetime Cluster on PUlocationID
+```
+
+#### queries for question 5
+```sql
+SELECT DISTINCT PULocationID
+FROM `peerless-sensor-411315.nyc_green_taxi.green_taxi_p_pudate_c_pu_loc`
+WHERE lpep_pickup_datetime >= '2022-06-01 00:00:00' 
+AND lpep_pickup_datetime <= '2022-06-30 23:59:59';
+--> estimated to process 1.12 MB when run
+```
+```sql
+SELECT DISTINCT PULocationID
+FROM `peerless-sensor-411315.nyc_green_taxi.green_tripdata_full`
+WHERE lpep_pickup_datetime >= '2022-06-01 00:00:00' 
+AND lpep_pickup_datetime <= '2022-06-30 23:59:59';
+--> estimated to process 12.82 MB when run
+```
+
+#### question 6
+Where is the data stored in the External Table you created?\
+--> GCP Bucket
+
+#### question 7
+It is best practice in Big Query to always cluster your data:\
+depends on your data so\
+--> false
+
+#### question 8
+SELECT count(*) is estimated to process 0 B when run on the BQ table.\
+I assume this query was run already run, for populating metadata purposes, and the result was cached.
