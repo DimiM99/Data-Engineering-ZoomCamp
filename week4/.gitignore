@@ -1,0 +1,2 @@
+# data directory in case load_data.py was run will condain ober 2.5 GB of parquet files
+data
