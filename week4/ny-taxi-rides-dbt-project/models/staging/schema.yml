@@ -53,7 +53,7 @@ models:
         tests:
           - relationships:
               to: ref('taxi_zones_lookup')
-              field: locationid
+              field: location_id
               severity: warn
 
       - name: dropoff_location_id
@@ -62,7 +62,7 @@ models:
         tests:
           - relationships:
               to: ref('taxi_zones_lookup')
-              field: locationid
+              field: location_id
               severity: warn
 
       - name: pickup_datetime
@@ -198,7 +198,7 @@ models:
         tests:
           - relationships:
               to: ref('taxi_zones_lookup')
-              field: locationid
+              field: location_id
               severity: warn
 
       - name: dropoff_location_id
@@ -207,7 +207,7 @@ models:
         tests:
           - relationships:
               to: ref('taxi_zones_lookup')
-              field: locationid
+              field: location_id
               severity: warn
 
       - name: pickup_datetime
