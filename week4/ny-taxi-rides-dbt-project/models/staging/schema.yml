@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: staging
+    database: peerless-sensor-411315
+    schema: tlc_trip_data_all
+
+    tables:
+      - name: nyc_green_trips_all
+      - name: nyc_yellow_trips_all
+      - name: nyc_fhv_trips_all
