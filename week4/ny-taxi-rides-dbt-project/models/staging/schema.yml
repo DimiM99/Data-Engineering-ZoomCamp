@@ -292,7 +292,7 @@ models:
 
       - name: payment_type_description
         data_type: string
-        description: > 
+        description: >
           The description of the paymeant type based on payment_type
             1 = Credit card
             2 = Cash
@@ -301,3 +301,41 @@ models:
             5 = Unknown
             6 = Voided trip
             else EMPTY
+
+  - name: stg_fhv_tripdata
+    description: "Trip Data made with for hire vehicales"
+    columns:
+      - name: trip_id
+        data_type: string
+        description: "Primary key for this table, generated with a concatenation of dispatching_base_num+pickup_datetime"
+
+      - name: dispatching_base_num
+        data_type: string
+        description: "The TLC Base License Number of the base that dispatched the trip"
+
+      - name: pickup_location_id
+        data_type: int64
+        description: "location_id where the meter was engaged."
+
+      - name: dropoff_location_id
+        data_type: int64
+        description: location_id where the meter was disengaged."
+
+      - name: pickup_datetime
+        data_type: timestamp
+        description: "The date and time when the meter was engaged."
+
+      - name: dropoff_datetime
+        data_type: timestamp
+        description: "The date and time when the meter was disengaged."
+
+      - name: sr_flag
+        data_type: float64
+        description: >
+          Indicates if the trip was a part of a shared ride chain offered by a
+          High Volume FHV company (e.g. Uber Pool, Lyft Line). For shared
+          trips, the value is 1. For non-shared rides, this field is null.
+
+      - name: affiliated_base_number
+        data_type: string
+        description: ""
