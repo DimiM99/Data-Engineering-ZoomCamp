@@ -27,11 +27,11 @@ def fetch_data_resource(trip_obj):
                 else:
                     df['airport_fee'] = np.nan
             if trip_type == 'fhv':
-                if 'p_ulocation_id' in df.columns:
+                if 'PUlocationID' in df.columns:
                     df['PUlocationID'] = df['PUlocationID'].astype(float)
                 else:
                     df['PUlocationID'] = np.nan
-                if 'd_olocation_id' in df.columns:
+                if 'DOlocationID' in df.columns:
                     df['DOlocationID'] = df['DOlocationID'].astype(float)
                 else:
                     df['DOlocationID'] = np.nan
