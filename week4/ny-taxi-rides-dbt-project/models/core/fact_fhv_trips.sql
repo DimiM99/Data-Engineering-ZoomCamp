@@ -16,9 +16,19 @@ dim_zones as (
     where borough != 'Unknown'
 )
 
-select *
+select fhv_tripdata.trip_id,
+    fhv_tripdata.dispatching_base_num,
+    fhv_tripdata.pickup_location_id,
+    fhv_tripdata.pickup_datetime,
+    pickup_zone.borough as pickup_borough,
+    pickup_zone.zone as pickup_zone,
+    fhv_tripdata.dropoff_location_id,
+    fhv_tripdata.dropoff_datetime,
+    dropoff_zone.borough as dropoff_borough,
+    dropoff_zone.zone as dropoff_zone,
+    fhv_tripdata.sr_flag,
+    fhv_tripdata.affiliated_base_number
 from fhv_tripdata
--- this fails for no reason
 inner join dim_zones as pickup_zone
 on fhv_tripdata.pickup_location_id = pickup_zone.location_id
 inner join dim_zones as dropoff_zone
