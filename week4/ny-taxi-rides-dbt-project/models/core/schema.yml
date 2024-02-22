@@ -233,6 +233,18 @@ models:
         data_type: string
         description: ""
         
-      - name: service_zone
+      - name: pickup_borough
+        data_type: string
+        description: ""
+
+      - name: pickup_zone
+        data_type: string
+        description: ""
+
+      - name: dropoff_borough
+        data_type: string
+        description: ""
+
+      - name: dropoff_zone
         data_type: string
         description: ""
