@@ -3,7 +3,7 @@
 
  option 1 is also technically correct,\
  since is_test_run variable is true by default and applies a limit 100 only to our staging models anyway.\
- So both
+ So both 1 and 3 are correct.
  
 ## Question 2
 --> The code from a development branch requesting a merge to main
@@ -33,4 +33,34 @@ Green - 415,281\
 FHV - 290,682
 
 --> Yellow
+
+queries used: 
+```sql
+with data as (
+  select *,
+  timestamp_trunc(
+        cast(pickup_datetime as timestamp),
+        month
+    ) as trip_month, 
+  from `peerless-sensor-411315`.`dbt_dev_ny_taxi_rides_dimi`.`fact_fhv_trips`
+)
+select count(1),
+from data
+where trip_month = '2019-07-01 00:00:00 UTC'
+```
+```sql
+with data as (
+  select *,
+  timestamp_trunc(
+        cast(pickup_datetime as timestamp),
+        month
+    ) as revenue_month, 
+  from `peerless-sensor-411315`.`dbt_dev_ny_taxi_rides_dimi`.`fact_trips`
+)
+select service_type,
+count(1)
+from data 
+where revenue_month = '2019-07-01 00:00:00 UTC'
+group by service_type
+```
 
