@@ -9,3 +9,7 @@
   - JAVA_HOME
   - SPARK_HOME
   - SCALA_HOME
+
+### Spark
+
+- use \ a bunch when writing multi-line code, \ before next line
