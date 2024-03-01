@@ -51,20 +51,41 @@ spark-submit \
         --input_yellow=data-dump/taxi/pq/yellow/2021/*/ \
         --output=data/report-2021
 ```
-
+### Submitting a job to the cluster in cloud
+#### Spark to GCS
 ```bash
 # upload the spark job to gcs
-gsutil cp spark_job.py gs://de-spark-dimi/code/spark_job.py
+gsutil cp spark_job_to_gs.py gs://de-spark-dimi/code/spark_job_to_gs.py
 ```
 
 ```bash
+# submit the job to the cluster spark -> gcs
 gcloud dataproc jobs submit pyspark \
   --cluster='dt-de-dimi-spark-cluster' \
   --region='europe-west3' \
-  'gs://de-spark-dimi/code/spark_job.py' \
+  'gs://de-spark-dimi/code/spark_job_to_gs.py' \
   -- \
   --input_green='gs://de-spark-dimi/pq/green/2021/*/' \
   --input_yellow='gs://de-spark-dimi/pq/yellow/2021/*/' \
   --output='gs://de-spark-dimi/report-2021'
+
+```
+#### Spark to BigQuery
+```bash
+# upload the spark job to gcs
+gsutil cp spark_job_to_bq.py gs://de-spark-dimi/code/spark_job_to_bq.py
+```
+
+```bash
+# submit the job to the cluster spark -> gcs
+gcloud dataproc jobs submit pyspark \
+  --cluster='dt-de-dimi-spark-cluster' \
+  --region='europe-west3' \
+  --jars='gs://spark-lib/bigquery/spark-bigquery-latest_2.12.jar' \
+  'gs://de-spark-dimi/code/spark_job_to_bq.py' \
+  -- \
+  --input_green='gs://de-spark-dimi/pq/green/2021/*/' \
+  --input_yellow='gs://de-spark-dimi/pq/yellow/2021/*/' \
+  --output='spark_reports.report_2021'
 
 ```
