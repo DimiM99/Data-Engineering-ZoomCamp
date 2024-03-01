@@ -51,3 +51,20 @@ spark-submit \
         --input_yellow=data-dump/taxi/pq/yellow/2021/*/ \
         --output=data/report-2021
 ```
+
+```bash
+# upload the spark job to gcs
+gsutil cp spark_job.py gs://de-spark-dimi/code/spark_job.py
+```
+
+```bash
+gcloud dataproc jobs submit pyspark \
+  --cluster='dt-de-dimi-spark-cluster' \
+  --region='europe-west3' \
+  'gs://de-spark-dimi/code/spark_job.py' \
+  -- \
+  --input_green='gs://de-spark-dimi/pq/green/2021/*/' \
+  --input_yellow='gs://de-spark-dimi/pq/yellow/2021/*/' \
+  --output='gs://de-spark-dimi/report-2021'
+
+```
