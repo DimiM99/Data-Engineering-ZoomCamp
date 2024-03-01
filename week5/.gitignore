@@ -2,5 +2,8 @@
 spark/data-dump
 homework/tmp
 
+# directory for jar dependencies
+lib
+
 # directory for the notebook checkpoints
 .ipynb_checkpoints
