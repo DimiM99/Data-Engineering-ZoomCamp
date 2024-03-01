@@ -51,7 +51,9 @@ spark-submit \
         --input_yellow=data-dump/taxi/pq/yellow/2021/*/ \
         --output=data/report-2021
 ```
+
 ### Submitting a job to the cluster in cloud
+
 #### Spark to GCS
 ```bash
 # upload the spark job to gcs
@@ -70,6 +72,7 @@ gcloud dataproc jobs submit pyspark \
   --output='gs://de-spark-dimi/report-2021'
 
 ```
+
 #### Spark to BigQuery
 ```bash
 # upload the spark job to gcs
