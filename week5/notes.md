@@ -20,3 +20,34 @@
 - [ ] create a gcs bucket
 - [ ] upload a file to the bucket
 - [ ] download the jar dep for spark to use gcs from [here](https://storage.googleapis.com/hadoop-lib/gcs/gcs-connector-hadoop3-2.2.5.jar)
+
+### Spark Cluster 
+```bash 
+# navigate to the spark home directory
+cd $SPARK_HOME
+```
+
+```bash
+# start the master server
+./sbin/start-master.sh
+```
+
+```bash
+# start a worker
+./sbin/start-worker.sh <master-spark-URL>
+```
+
+```bash
+# convert a notebook to a python script for a spark job
+jupyter nbconvert --to=script notebook.ipynb
+```
+
+```bash
+# submit a job to the cluster
+spark-submit \
+    --master=<master-spark-URL> \
+    spark_job.py \
+        --input_green=data-dump/taxi/pq/green/2021/*/ \
+        --input_yellow=data-dump/taxi/pq/yellow/2021/*/ \
+        --output=data/report-2021
+```
