@@ -13,3 +13,5 @@
 ### Spark
 
 - use \ a bunch when writing multi-line code, \ before next line
+- for sql queries, define how the df can be referenced via .createOrReplaceTempView()
+- use action functions (eager execution) to see the results of the transformations (lazy execution)
