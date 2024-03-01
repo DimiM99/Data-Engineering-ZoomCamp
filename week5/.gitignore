@@ -1,5 +1,6 @@
 # directory for the data from notebooks
 spark/data-dump
+homework/tmp
 
 # directory for the notebook checkpoints
 .ipynb_checkpoints
