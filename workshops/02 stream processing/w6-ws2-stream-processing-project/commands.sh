@@ -42,3 +42,6 @@ clickhouse-client() {
 clickhouse-client-term() {
   docker exec -it clickhouse clickhouse-client
 }
+
+# perform actions on risingwave db
+alias 'rw-sql'='psql -p 4566 -h localhost -d dev -U root'
