@@ -238,7 +238,7 @@ services:
       - "--reserve-memory"
       - 0M
       - "--memory"
-      - 4G
+      - 3G
       - "--overprovisioned"
       - "--node-id"
       - "0"
